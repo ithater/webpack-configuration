@@ -1,11 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -28,6 +29,7 @@ const optimization = () => {
 
   return config;
 };
+
 const cssLoaders = extra => {
   const loaders = [
     {
@@ -37,9 +39,10 @@ const cssLoaders = extra => {
         reloadAll: true,
       },
     }, 
-    'css-loader'
+    'css-loader',
+    'postcss-loader'
   ];
-
+  
   if (extra) loaders.push(extra);
 
   return loaders;
@@ -70,7 +73,7 @@ module.exports = {
     analytics: './src/analytics.js',
   },
   output: {
-    filename: filename('js'),
+    filename: `js/${filename('js')}`,
     path: `${PATHS.dist}/`,
   },
   resolve: {
@@ -84,8 +87,8 @@ module.exports = {
   devServer: {
     port: 4200,
     hot: isDev,
-    inline: true,
-    hot: true,
+    inline: isDev,
+    publicPath: '',
   },
   devtool: isDev ? 'sourse-map' : '',
   plugins: [
@@ -96,7 +99,6 @@ module.exports = {
       },
       alwaysWriteToDisk: true,
     }),
-    new HtmlWebpackHarddiskPlugin(),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
@@ -125,12 +127,28 @@ module.exports = {
         use: cssLoaders('sass-loader'),
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        use: ['url-loader'],
+        test: /img\.svg$|\.(png|jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '../',
+              name: `assets/image/[name].[ext]`,
+            }
+          },
+        ],
       },
       {
-        test: /\.(ttf|woff|woff2|eot|svg)/,
-        use: ['url-loader'],
+        test: /font\.svg$|\.(ttf|woff|woff2|eot)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '../',
+              name: `assets/fonts/[name].[ext]`,
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
