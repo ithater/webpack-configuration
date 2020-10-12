@@ -86,7 +86,7 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     port: 4200,
-    hot: isDev,
+    // hot: isDev,
     inline: isDev,
     publicPath: '',
   },
@@ -97,7 +97,7 @@ module.exports = {
       minify: {
         collapseWhitespace: isProd
       },
-      alwaysWriteToDisk: true,
+      chunks: ['main'],
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({

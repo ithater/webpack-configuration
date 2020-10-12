@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 
-
+console.log('analytics');
 const createAnalytics = () => {
   let counter = 0;
   let destroyed = false;
