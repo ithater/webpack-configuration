@@ -90,7 +90,7 @@ module.exports = {
     inline: isDev,
     publicPath: '',
   },
-  devtool: isDev ? 'sourse-map' : '',
+  devtool: isDev ? 'source-map' : '',
   plugins: [
     new HTMLWebpackPlugin({
       template: `${PATHS.src}/index.html`,
@@ -153,10 +153,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions(),
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions(),
+          },
+        ],
       }
     ]
   },
