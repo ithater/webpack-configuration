@@ -11,7 +11,7 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
-const filename = ext => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
+const filename = ext => (isDev ? `[name].${ext}` : `[name].[fullhash].${ext}`);
 
 const optimization = () => {
   const config = {
@@ -47,6 +47,7 @@ const cssLoaders = extra => {
 
   return loaders;
 };
+
 const babelOptions = (preset, plugins) => {
   const options = {
     presets: [
@@ -70,7 +71,6 @@ module.exports = {
   mode: 'development',
   entry: {
     main: ['@babel/polyfill', './src/index.js'],
-    analytics: './src/analytics.js',
   },
   output: {
     filename: `js/${filename('js')}`,
@@ -86,11 +86,11 @@ module.exports = {
   optimization: optimization(),
   devServer: {
     port: 4200,
-    // hot: isDev,
-    inline: isDev,
+    hot: isDev,
+    open: isDev,
     publicPath: '',
   },
-  devtool: isDev ? 'source-map' : '',
+  devtool: isDev ? 'source-map' : 'nosources-source-map',
   plugins: [
     new HTMLWebpackPlugin({
       template: `${PATHS.src}/index.html`,
@@ -115,6 +115,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `css/${filename('css')}`,
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     rules: [

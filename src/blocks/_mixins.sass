@@ -1,0 +1,67 @@
+@mixin max_1200
+  @media (max-width: 1200px)
+    @content
+
+@mixin max_992
+  @media (max-width: 992px)
+    @content
+
+@mixin max_768
+  @media (max-width: 767px)
+    @content
+
+@mixin max_640
+  @media (max-width: 640px)
+    @content
+
+@mixin max_600
+  @media (max-width: 600px)
+    @content
+
+@mixin max_576
+  @media (max-width: 576px)
+    @content
+
+
+
+@mixin min_1200
+  @media (min-width: 1200px)
+    @content
+
+@mixin min_992
+  @media (min-width: 992px)
+    @content
+
+@mixin min_768
+  @media (min-width: 767px)
+    @content
+
+@mixin min_640
+  @media (min-width: 640px)
+    @content
+
+@mixin min_600
+  @media (min-width: 600px)
+    @content
+
+@mixin min_576
+  @media (min-width: 576px)
+    @content
+
+@mixin smart-hover()
+  @media (hover: hover) and (pointer: fine)
+    @content
+
+@mixin box($width, $height: $width)
+  width: $width
+  height: $height
+
+@mixin absolute-full
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  width: 100%
+  height: 100%
+  @content

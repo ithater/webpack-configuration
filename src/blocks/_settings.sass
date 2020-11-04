@@ -1,0 +1,33 @@
+*
+  box-sizing: border-box
+body
+  background-color: #fff
+.container
+  max-width: 1170px
+  margin: auto
+  // mobile-first
+  @include min_576
+    max-width: 87.5%
+  @include min_768
+    max-width: 90%
+  @include min_992
+    max-width: 700px
+  @include min_1200
+    max-width: 960px
+  // desktop-first
+  // @include max_1200
+  //   max-width: 960px
+  // @include max_992
+  //   max-width: 700px
+  // @include max_768
+  //   max-width: 90%
+  // @include max_576
+  //   max-width: 87.5%
+h1,
+h2,
+h3
+  margin: 0
+img
+  width: 100%
+button
+  cursor: pointer
