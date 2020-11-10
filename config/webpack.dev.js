@@ -21,13 +21,14 @@ module.exports = merge(base, {
 
 	// Spin up a server for quick development
 	devServer: {
-		historyApiFallback: true,
-		contentBase: PATHS.build,
 		open: true,
 		compress: true,
 		// hot: true,
 		inline: true,
+		liveReload: true,
 		port: 5500,
+		publicPath: '/',
+
 	},
 
 	plugins: [
