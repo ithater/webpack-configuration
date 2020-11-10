@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 
-// const webpack = require('webpack');
+const webpack = require('webpack');
 
 const base = require('./webpack.base');
 const PATHS = require('./paths');
@@ -25,8 +25,8 @@ module.exports = merge(base, {
 		contentBase: PATHS.build,
 		open: true,
 		compress: true,
-		// hot: true,
-		inline: true,
+		hot: true,
+		// inline: true,
 		port: 5500,
 	},
 

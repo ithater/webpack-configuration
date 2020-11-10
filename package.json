@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
-    "start": "cross-env NODE_ENV=development webpack serve --inline --config config/webpack.dev.js"
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js"
   },
   "browserslist": [
     "> 0.25%, not dead",
