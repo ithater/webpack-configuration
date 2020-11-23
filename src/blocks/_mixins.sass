@@ -1,51 +1,13 @@
-@mixin max_1200
-  @media (max-width: 1200px)
+@mixin minQ-maxQ($min, $max)
+  @media (min-width: $min) and (max-width: $max)
     @content
 
-@mixin max_992
-  @media (max-width: 992px)
+@mixin maxQ($max)
+  @media (max-width: $max)
     @content
 
-@mixin max_768
-  @media (max-width: 767px)
-    @content
-
-@mixin max_640
-  @media (max-width: 640px)
-    @content
-
-@mixin max_600
-  @media (max-width: 600px)
-    @content
-
-@mixin max_576
-  @media (max-width: 576px)
-    @content
-
-
-
-@mixin min_1200
-  @media (min-width: 1200px)
-    @content
-
-@mixin min_992
-  @media (min-width: 992px)
-    @content
-
-@mixin min_768
-  @media (min-width: 767px)
-    @content
-
-@mixin min_640
-  @media (min-width: 640px)
-    @content
-
-@mixin min_600
-  @media (min-width: 600px)
-    @content
-
-@mixin min_576
-  @media (min-width: 576px)
+@mixin minQ($min)
+  @media (min-width: $min)
     @content
 
 @mixin smart-hover()
