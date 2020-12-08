@@ -1,3 +1,3 @@
 * # Template with config for 
-  * ## [React](/tree/react)
-  * ## [HTML](/tree/html)
+  * ## [React](https://github.com/ithater/webpack-configuration/tree/react)
+  * ## [HTML](https://github.com/ithater/webpack-configuration/tree/html)
