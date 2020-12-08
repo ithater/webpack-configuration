@@ -15,8 +15,7 @@ const filename = ext => (isDev ? `[name].${ext}` : `[name].[fullhash].${ext}`);
 module.exports = {
 	// Входные файлы
 	entry: {
-		main: ['@babel/polyfill', `${PATHS.src}/index.js`],
-		test: ['@babel/polyfill', `${PATHS.src}/index.js`],
+		main: ['@babel/polyfill', `${PATHS.src}/index.jsx`],
 	},
 
 	// Выходные файлы
@@ -27,9 +26,9 @@ module.exports = {
 
 	// Алиасы
 	resolve: {
-		extensions: ['.js', '.json'],
+		extensions: ['.js', '.json', '.jsx'],
 		alias: {
-			'@blocks': `${PATHS.src}/blocks`,
+			'@components': `${PATHS.src}/components`,
 			'@': PATHS.src,
 		},
 	},
@@ -54,8 +53,8 @@ module.exports = {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: `${PATHS.src}/${PATHS.assets}/image`,
-					to: `${PATHS.build}/${PATHS.assets}/image`,
+					from: `${PATHS.src}/${PATHS.assets}`,
+					to: `${PATHS.build}/${PATHS.assets}`,
 				},
 			],
 		}),
@@ -127,6 +126,26 @@ module.exports = {
 						options: {
 							presets: [
 								'@babel/preset-env'
+							]
+						},
+					},
+				],
+			},
+			
+			// react jsx
+			{
+				test: /\.jsx$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								'@babel/preset-env',
+								'@babel/preset-react',
+							],
+							plugins: [
+								'babel-plugin-styled-components'
 							]
 						},
 					},
