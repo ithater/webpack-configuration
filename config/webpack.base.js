@@ -16,7 +16,6 @@ module.exports = {
 	// Входные файлы
 	entry: {
 		main: ['@babel/polyfill', `${PATHS.src}/index.js`],
-		test: ['@babel/polyfill', `${PATHS.src}/index.js`],
 	},
 
 	// Выходные файлы
