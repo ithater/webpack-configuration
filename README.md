@@ -1,3 +1,3 @@
 * # Template with config for 
-  * ## [React](./react)
-  * ## [HTML](./html)
+  * ## [React](../tree/react)
+  * ## [HTML](../tree/html)
