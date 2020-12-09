@@ -53,8 +53,8 @@ module.exports = {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: `${PATHS.src}/${PATHS.assets}/image`,
-					to: `${PATHS.build}/${PATHS.assets}/image`,
+					from: `${PATHS.src}/${PATHS.assets}`,
+					to: `${PATHS.build}/${PATHS.assets}`,
 				},
 			],
 		}),
